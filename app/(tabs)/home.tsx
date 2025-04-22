@@ -73,8 +73,9 @@ const Home: React.FC = () => {
   // Trigger countdown when motor temperature goes above 45
   useEffect(() => {
     const motorTemp = parseNumber(data.motorTemperature);
+    const batterTemp = parseNumber(data.batteryTemperature);
 
-    if (motorTemp >= 45 && timeLeft === null) {
+    if ((motorTemp >= 45 || batterTemp >= 45) && timeLeft === null) {
       setTimeLeft(59); // start timer
     }
   }, [data.motorTemperature]);
@@ -107,8 +108,8 @@ const Home: React.FC = () => {
             <Card
               data1={data.distance}
               data2={formatTime(timeLeft)}
-              unit1="Distance"
-              unit2="Autoshut down"
+              unit1="Distance (Cm)"
+              unit2="Autoshut down (s)"
               icon1={require("../../assets/images/icon9.png")}
               icon2={require("../../assets/images/icon8.png")}
               isWarning1={parseNumber(data.distance) <= 45}
@@ -157,7 +158,7 @@ const Home: React.FC = () => {
               unit2="Power (mW)"
               icon1={require("../../assets/images/icon5.png")}
               icon2={require("../../assets/images/icon6.png")}
-              isWarning1={parseNumber(data.rpm) >= 3000}
+              isWarning1={parseNumber(data.rpm) >= 30000}
               isWarning2={parseNumber(data.power) >= 5000}
             />
           </View>

@@ -83,11 +83,11 @@ const Home: React.FC = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       checkConditionsAndLog(); // Check and log every minute
-    }, 5000); // 60000 milliseconds = 1 minute
+    }, 10000); // 60000 milliseconds = 1 minute
 
     // Clear interval on component unmount
     return () => clearInterval(intervalId);
-  }, [data]); // The interval will start when `data` changes
+  }, []); // The interval will start when `data` changes
 
   return (
     <SafeAreaView style={styles.container}>

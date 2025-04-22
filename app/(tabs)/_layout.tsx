@@ -43,7 +43,7 @@ const TabsLayout: React.FC = () => {
             title: "Dashboard",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
-              <TabIcon icon={icons.plus} color={color} name="IOT 1" focused={focused} />
+              <TabIcon icon={icons.plus} color={color} name="IOT" focused={focused} />
             ),
           }}
         />
